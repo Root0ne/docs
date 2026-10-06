@@ -57,7 +57,7 @@ Discounting appendix-only items gives **14 / 24 / 19 / 0** (iteration 4: 15 / 23
 | K2.2 abort on failed check | missed | — | B *Anti analysis* |
 | K2.3 mutex | **found** (it. 4: missed) | §8 T1564.001 procedure (the analyst's claim) "The malware creates a mutex to ensure only one instance is running."; §9 `runnung` "Likely part of a mutex name or identifier". The technique it is filed under is wrong (see reverse direction) | B *Mutex* |
 | K2.4 install, then persist | partly (body) | §1 "It attempts to establish persistence by creating scheduled tasks and modifying registry keys"; §4 step 3 "creating shortcuts in the Startup folder and potentially modifying Registry Run keys" (wrong mechanism). No self-copy | B *Persistence* |
-| K2.5 register, then command loop | partly (body) | §4 step 2 "Exfiltrates the collected … data to C2 servers (https://skinnyjeanso.com/live/, https://titnovacrion.top/live/) via HTTP POST requests using RC4 encryption." No registration and no loop | B *Communications protocol* |
+| K2.5 register, then command loop | partly (body) | §4 step 2 "Exfiltrates the collected … data to C2 servers (hxxps://skinnyjeanso[.]com/live/, hxxps://titnovacrion[.]top/live/) via HTTP POST requests using RC4 encryption." No registration and no loop | B *Communications protocol* |
 | K2.6 `update_data.dat` for new C2s | partly (body) | §5.3 "Update Data File · \update_data.dat"; §9 "Data file for updates or storage". Purpose not stated | B *The update data .dat file* |
 
 ### K3
@@ -76,7 +76,7 @@ Discounting appendix-only items gives **14 / 24 / 19 / 0** (iteration 4: 15 / 23
 |---|---|---|---|
 | K4.1 bot ID | **partly (body)** (it. 4: appendix) | §5.3 "Identifier Pattern · %04X%04X%04X%04X%08X%04X"; §9 the same value as "Mutex name pattern". No derivation | B *Bot ID* |
 | K4.2 group → FNV-1a | partly (body) | §5.2 capa row "hash data using fnv"; `Littlehw` in §9 ("Likely part of a mutex name or identifier"); `group=%lu` in the beacon format. Not linked | B *Group and Group ID* |
-| K4.4 two encrypted C2s | found | §5.7 "The binary contains decoded strings referencing two C2 endpoints: `https://skinnyjeanso.com/live/` and `https://titnovacrion.top/live/`" | B *C2 decryption* |
+| K4.4 two encrypted C2s | found | §5.7 "The binary contains decoded strings referencing two C2 endpoints: `hxxps://skinnyjeanso[.]com/live/` and `hxxps://titnovacrion[.]top/live/`" | B *C2 decryption* |
 | K5.1 `Custom_update\Update_%x.dll` | partly (body) | `Custom_update` and `Update_%x` both in §9 ("Likely part of a mutex name or identifier"); §5.3 "Persistence Locations · … Local AppData" | B *Persistence* |
 | K5.2 task `Updater`, COM, at logon | **partly (body)** (it. 4: found) | §1 "creating scheduled tasks"; `Updater` and `LogonTrigger` in §9, each "Likely part of a mutex name or identifier". The task is never named | B *Persistence* |
 | K5.3 `update_data.dat` holds new C2 URLs | partly (body) | §9 "Data file for updates or storage" | B |
@@ -102,10 +102,10 @@ Discounting appendix-only items gives **14 / 24 / 19 / 0** (iteration 4: 15 / 23
   mutex label; iteration 4: found), `update_data.dat`, **`Update_%x`** (iteration 4: appendix).
 - **K10 ATT&CK.** found: **T1027** (published; RC4, stackstrings), **T1218.011** (published, "uses Rundll32.exe to
   execute code"). missed: **T1053.005** (not claimed; iteration 4: found), T1055, T1070.004, T1059.003.
-- **Build consistency.** `skinnyjeanso.com` and `titnovacrion.top` are on B's list of 47. `Littlehw` is on B's group
+- **Build consistency.** `skinnyjeanso[.]com` and `titnovacrion[.]top` are on B's list of 47. `Littlehw` is on B's group
   list, and `12345` is B's first RC4 key. Both in the body, unexplained. All consistent.
 - **K11.** The only draft is the hash/imphash YARA rule. The judge's verdict was stated this time, and it wrote the two
-  C2 domains as indicators, but as `[url:value LIKE '%skinnyjeanso.com%']`. The platform's integrity pass drops any
+  C2 domains as indicators, but as `[url:value LIKE '%skinnyjeanso[.]com%']`. The platform's integrity pass drops any
   pattern without "=", so 12 of its 13 indicators were removed and no domain reached `/iocs`, STIX or a draft rule.
 
 ## IOC recall (K9, 8 core values)

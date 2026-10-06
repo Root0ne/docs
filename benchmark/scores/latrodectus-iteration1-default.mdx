@@ -74,11 +74,11 @@ In the baseline's four columns: **12 found / 29 partly / 16 missed / 0 wrong** (
 |---|---|---|---|
 | K4.1 bot ID | partly (appendix) | `%04X%04X%04X%04X%08X%04X` in Appendix A only; no volume serial, no constant | B *Bot ID* |
 | K4.2 group → FNV-1a | partly (body) | §5.2 capa row "hash data using fnv · C0030.005"; the group name `Littlehw` only in the appendix | B *Group and Group ID* |
-| K4.4 two encrypted C2s | **found** | §5.7 "Additional encoded strings reference `https://titnovacrion.top/live/` and `https://skinnyjeanso.com/live/`, indicating multiple potential C2 endpoints" | B *C2 decryption* |
+| K4.4 two encrypted C2s | **found** | §5.7 "Additional encoded strings reference `hxxps://titnovacrion[.]top/live/` and `hxxps://skinnyjeanso[.]com/live/`, indicating multiple potential C2 endpoints" | B *C2 decryption* |
 | K5.1 `Custom_update\Update_%x.dll` | partly (appendix) | `Custom_update`, `Update_%x`, `AppData`, `.dll` in the appendix only | B *Persistence* |
 | K5.2 task `Updater`, COM, at logon | partly (body) | §5.4 "persistence mechanisms involving scheduled tasks … (`LogonTrigger`, `PT0S` …)"; T1053.005 published. The name `Updater` only in the appendix; COM not said | B *Persistence* |
 | K5.3 `update_data.dat` holds new C2 URLs | partly (body) | named as a file string; purpose given as payload/update | B |
-| K6.1 HTTPS POST `/live/` | **found** | §5.5 "packaged into a POST request … transmitted to the endpoint `https://skinnyjeanso.com/live/`" | B *Communications protocol* |
+| K6.1 HTTPS POST `/live/` | **found** | §5.5 "packaged into a POST request … transmitted to the endpoint `hxxps://skinnyjeanso[.]com/live/`" | B *Communications protocol* |
 | K6.2 User-Agent `… Tob 1.1` | partly (appendix) | only in the appendix | B |
 | K6.3 RC4 then base64 | partly (body) | §5.7 channel table "Encryption · RC4 PRGA" on the HTTP channel (right purpose this time); base64 not stated (alphabet only in the appendix); key `12345` only in the appendix | B |
 | K6.4 beacon interval | missed | — | B |
@@ -101,7 +101,7 @@ In the baseline's four columns: **12 found / 29 partly / 16 missed / 0 wrong** (
 - **K10 ATT&CK.** found: T1027 (procedure now "obfuscation … to hide its malicious behavior and strings"), T1053.005
   (scheduled task), T1059.003 (cmd.exe recon). partly: T1218.011 (the parent T1218 is published for "LOLBin … rundll32"). missed:
   T1055, T1070.004.
-- **Build consistency.** The two C2 domains `skinnyjeanso.com` and `titnovacrion.top` are both on B's list of 47; group
+- **Build consistency.** The two C2 domains `skinnyjeanso[.]com` and `titnovacrion[.]top` are both on B's list of 47; group
   `Littlehw` is on B's list; RC4 key `12345` is the key B expects for a March 2024 build — all three **consistent**, but the last two
   only in the appendix.
 - **K11.** The one draft rule is still the hash-or-imphash YARA. None of the decoded strings (UA, `runnung`,
@@ -109,7 +109,7 @@ In the baseline's four columns: **12 found / 29 partly / 16 missed / 0 wrong** (
 
 ## IOC recall (key K9, 8 core values)
 - **Published** (the `/iocs` endpoint and §9): 1 of 8 (the sample's own hashes). The STIX bundle additionally carries two
-  domain indicators, `skinnyjeanso.com` and `titnovacrion.top` (both on B's C2 list) — which the `/iocs` endpoint and §9 do
+  domain indicators, `skinnyjeanso[.]com` and `titnovacrion[.]top` (both on B's C2 list) — which the `/iocs` endpoint and §9 do
   not (a disagreement between surfaces, fixed in iteration 2).
 - **Stated in the report body:** 3 of 8 (hashes, `/live/`, `update_data.dat`).
 - **Present anywhere in the report, appendix included:** 8 of 8.

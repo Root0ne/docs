@@ -55,7 +55,7 @@ appendix-only items gives **15 / 23 / 19 / 0**, against 12 / 20 / 25 / 0 in both
 | K2.2 abort on failed check | missed | — | B *Anti analysis* |
 | K2.3 mutex | missed | `CreateMutexW` appears only in the §7 imports. `runnung` is in the §9 table but described as "Unknown string, possibly part of a key or identifier" | B *Mutex* |
 | K2.4 install, then persist | partly (body) | §4 step 5 "Establishes persistence by creating a scheduled task named "Updater" with a "LogonTrigger""; step 4 drops "in locations such as … AppData". There is no self-copy step | B *Persistence* |
-| K2.5 register, then command loop | partly (body) | §4 step 6 "Exfiltrates collected system data … to C2 servers (https://skinnyjeanso.com/live/ or https://titnovacrion.top/live/) using HTTP POST requests". No registration and no loop | B *Communications protocol* |
+| K2.5 register, then command loop | partly (body) | §4 step 6 "Exfiltrates collected system data … to C2 servers (hxxps://skinnyjeanso[.]com/live/ or hxxps://titnovacrion[.]top/live/) using HTTP POST requests". No registration and no loop | B *Communications protocol* |
 | K2.6 `update_data.dat` for new C2s | partly (body) | §5.3 "Local Data Files · \update_data.dat, files/bp.dat"; §9 "Local configuration or payload file"; §4 "may write update data files". Named, but its purpose (replacement C2s) is not stated | B *The update data .dat file* |
 
 ### K3
@@ -74,7 +74,7 @@ appendix-only items gives **15 / 23 / 19 / 0**, against 12 / 20 / 25 / 0 in both
 |---|---|---|---|
 | K4.1 bot ID | partly (appendix) | `%04X%04X%04X%04X%08X%04X` appears only in Appendix A | B *Bot ID* |
 | K4.2 group → FNV-1a | partly (body) | §5.2 capa row "hash data using fnv". `Littlehw` is now in the §9 body ("Unknown string, possibly part of a key or identifier"), and `group=%lu` is in the beacon format row. The three are not linked | B *Group and Group ID* |
-| K4.4 two encrypted C2s | found | §5.7 "It constructs HTTP POST requests to two distinct URLs: `https://skinnyjeanso.com/live/` and `https://titnovacrion.top/live/`"; §5.2 "Decoded strings reveal … C2 servers" | B *C2 decryption* |
+| K4.4 two encrypted C2s | found | §5.7 "It constructs HTTP POST requests to two distinct URLs: `hxxps://skinnyjeanso[.]com/live/` and `hxxps://titnovacrion[.]top/live/`"; §5.2 "Decoded strings reveal … C2 servers" | B *C2 decryption* |
 | K5.1 `Custom_update\Update_%x.dll` | partly (body) | `Custom_update` is in the §9 body ("Unknown string"), and §4 and §5.4 describe drops to AppData. `Update_%x` appears only in the appendix | B *Persistence* |
 | K5.2 task `Updater`, COM, at logon | **found** (it. 2: partly) | §1 "The malware establishes persistence by creating a scheduled task named 'Updater' with a LogonTrigger to execute its payload upon user login."; §5.4; §8 T1053.005 published. COM is not mentioned: the name and the trigger are stated, the mechanism is not | B *Persistence* |
 | K5.3 `update_data.dat` holds new C2 URLs | partly (body) | Named in §5.3 and §9, with the purpose "Local configuration or payload file" | B |
@@ -101,7 +101,7 @@ appendix-only items gives **15 / 23 / 19 / 0**, against 12 / 20 / 25 / 0 in both
 - **K10 ATT&CK.** found: **T1027** (published; RC4 and stackstrings), **T1053.005** (published, "scheduled task named
   "Updater""; iteration 2: missed), **T1218.011** (published, "uses Rundll32.exe to execute code from a DLL"; iteration
   2: partly). missed: T1055, T1070.004, T1059.003 (cmd.exe is named in §4 and §5.6, but the technique is not claimed).
-- **Build consistency.** `skinnyjeanso.com` and `titnovacrion.top` are on B's list of 47. `Littlehw` is on B's group
+- **Build consistency.** `skinnyjeanso[.]com` and `titnovacrion[.]top` are on B's list of 47. `Littlehw` is on B's group
   list, and `12345` is B's first RC4 key. Both are now in the body, but unexplained. All consistent.
 - **K11.** The only draft is the hash/imphash YARA rule. The judge fell back to text extraction, so no domain indicator
   reached the export and no Suricata draft was made. Iteration 2 had two domain strings in the YARA and two DNS alerts.

@@ -70,11 +70,11 @@ In the baseline's four columns: **12 found / 25 partly / 20 missed / 0 wrong** (
 |---|---|---|---|
 | K4.1 bot ID | partly (appendix) | `%04X%04X%04X%04X%08X%04X` only in Appendix A | B *Bot ID* |
 | K4.2 group → FNV-1a | partly (body) | §5.2 capa row "hash data using fnv"; `Littlehw` only in the appendix | B *Group and Group ID* |
-| K4.4 two encrypted C2s | found | §5.7 "The sample contains strings indicating communication with two C2 endpoints: `https://skinnyjeanso.com/live/` and `https://titnovacrion.top/live/`"; §5.1 "Emulated decoding routines recovered 81 strings, including URLs for command-and-control" | B *C2 decryption* |
+| K4.4 two encrypted C2s | found | §5.7 "The sample contains strings indicating communication with two C2 endpoints: `hxxps://skinnyjeanso[.]com/live/` and `hxxps://titnovacrion[.]top/live/`"; §5.1 "Emulated decoding routines recovered 81 strings, including URLs for command-and-control" | B *C2 decryption* |
 | K5.1 `Custom_update\Update_%x.dll` | partly (body) | §5.8 "references a \"Custom_update\" routine" — the folder named, as a routine; `Update_%x` only in the appendix | B *Persistence* |
 | K5.2 task `Updater`, COM, at logon | partly (body) | §4 "creating scheduled tasks (LogonTrigger)"; §5.3 "Scheduled Tasks (LogonTrigger)". `Updater` only in the appendix; COM not said; T1053.005 no longer published | B *Persistence* |
 | K5.3 `update_data.dat` holds new C2 URLs | partly (body) | named in §5.6/§5.8, purpose "drop or execute additional payloads" | B |
-| K6.1 HTTPS POST `/live/` | found | §5.2 "C2 communication is structured around HTTP POST requests to URLs such as `https://skinnyjeanso.com/live/`"; §5.7 channel table | B |
+| K6.1 HTTPS POST `/live/` | found | §5.2 "C2 communication is structured around HTTP POST requests to URLs such as `hxxps://skinnyjeanso[.]com/live/`"; §5.7 channel table | B |
 | K6.2 User-Agent | **found** (iteration 1: appendix) | §5.3 "User-Agent · Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Tob 1.1)"; §5.7 "spoofs the User-Agent as `Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Tob 1.1)`" | B |
 | K6.3 RC4 then base64 | partly (body) | §1 "obfuscating data with RC4 encryption"; §5.3 "Encryption · RC4 PRGA"; but the §5.7 channel table says "Encryption · None". Base64 not stated; key `12345` only in the appendix | B |
 | K6.4 beacon interval | missed | — | B |
@@ -95,7 +95,7 @@ In the baseline's four columns: **12 found / 25 partly / 20 missed / 0 wrong** (
 - **K10 ATT&CK.** found: T1027 (published; RC4/stackstrings). partly: T1218.011 (T1218 only in §10.3 and §11 for
   rundll32, not published). missed: T1055, **T1053.005** and **T1059.003** (both found in iteration 1; the static
   analyst claimed T1082, T1071, T1027, T1014 and T1059.004 instead), T1070.004.
-- **Build consistency.** `skinnyjeanso.com`, `titnovacrion.top` on B's list of 47 (now in §9 and `/iocs`); `Littlehw` and
+- **Build consistency.** `skinnyjeanso[.]com`, `titnovacrion[.]top` on B's list of 47 (now in §9 and `/iocs`); `Littlehw` and
   `12345` still only in the appendix — consistent.
 - **K11.** The drafts are the hash/imphash YARA with the two C2 domains as strings (`2 of them`) and two Suricata DNS
   alerts for the domains. None of the decoded host strings (UA, `runnung`, `Custom_update`) is a draft string.
