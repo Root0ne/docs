@@ -1,53 +1,119 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Maljan",
+  "description": "Multi-agent malware analysis in which every claim in the report resolves back to the tool call it came from.",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1d4ed8",
+    "light": "#38bdf8",
+    "dark": "#1d4ed8"
   },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
+  "background": {
+    "color": {
+      "light": "#ffffff",
+      "dark": "#0b1120"
     }
   },
+  "appearance": {
+    "default": "dark"
+  },
+  "fonts": {
+    "family": "Inter"
+  },
+  "favicon": "/favicon.svg",
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/logo.svg",
+    "dark": "/images/logo.svg"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get started",
+        "pages": [
+          "index",
+          "getting-started",
+          "console"
+        ]
+      },
+      {
+        "group": "Usage",
+        "pages": [
+          "usage/running-an-analysis",
+          "usage/teams",
+          "usage/reports-and-exports"
+        ]
+      },
+      {
+        "group": "LLM providers",
+        "pages": [
+          "providers/index",
+          "providers/openai-compatible",
+          "providers/anthropic",
+          "providers/gemini",
+          "providers/ollama",
+          "providers/llama-cpp"
+        ]
+      },
+      {
+        "group": "Tools",
+        "pages": [
+          "tools/index",
+          "tools/ghidra",
+          "tools/radare2",
+          "tools/capa-yara",
+          "tools/sandboxes",
+          "tools/virustotal",
+          "tools/sidecars",
+          "tools/generic-mcp"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "pages": [
+          "api",
+          "integrations/mcp-servers",
+          "integrations/ci"
+        ]
+      },
+      {
+        "group": "Advanced",
+        "pages": [
+          "configuration",
+          "architecture",
+          "security",
+          "deployment",
+          "operations",
+          "development"
+        ]
+      },
+      {
+        "group": "Benchmark",
+        "pages": [
+          "benchmark/index",
+          "benchmark/scores/latrodectus-all-tools-local6",
+          "benchmark/scores/latrodectus-all-tools-run5",
+          "benchmark/scores/latrodectus-all-tools-run4",
+          "benchmark/scores/latrodectus-iteration6-default",
+          "benchmark/scores/latrodectus-iteration5-default",
+          "benchmark/scores/latrodectus-iteration4-default",
+          "benchmark/scores/latrodectus-iteration2-default",
+          "benchmark/scores/latrodectus-iteration2-r2",
+          "benchmark/scores/latrodectus-iteration1-default",
+          "benchmark/scores/latrodectus-iteration1-small"
+        ]
+      },
+      {
+        "group": "Paper",
+        "pages": [
+          "paper"
+        ]
+      }
+    ]
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:support@mintlify.com"
-      }
-    ],
     "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "type": "github",
+      "href": "https://github.com/Root0ne/Maljan"
     }
   },
   "contextual": {
@@ -64,9 +130,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/Root0ne/Maljan"
     }
   }
 }
