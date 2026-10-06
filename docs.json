@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Maljan",
   "description": "Multi-agent malware analysis in which every claim in the report resolves back to the tool call it came from.",
   "colors": {
@@ -9,6 +9,7 @@
     "dark": "#1d4ed8"
   },
   "background": {
+    "decoration": "grid",
     "color": {
       "light": "#ffffff",
       "dark": "#0b1120"
@@ -18,7 +19,7 @@
     "default": "dark"
   },
   "fonts": {
-    "family": "Inter"
+    "family": "Geist"
   },
   "favicon": "/favicon.svg",
   "logo": {
@@ -108,7 +109,16 @@
           "paper"
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub",
+          "icon": "github",
+          "href": "https://github.com/Root0ne/Maljan"
+        }
+      ]
+    }
   },
   "navbar": {
     "primary": {
